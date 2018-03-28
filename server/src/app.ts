@@ -2,6 +2,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
+import { router } from './router';
+import { noteRouter } from './note/note.route';
 import { config } from './config';
 
 
@@ -11,6 +13,7 @@ const app = express();
 
 mongoose.connect(config.MONGOURI, { useMongoClient: true }, (err) => {
     if (err) {
+        console.log("Error connecting to MongoDB")
         console.error(err);
         process.exit();
     }
@@ -22,9 +25,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger(process.env.NODE_ENV || 'dev'));
 
-// app.use('/user', UserRoute);
-// app.use('/secret', SecretRoute);
-// app.use('/message', MessageRoute);
+app.use('/', router);
+app.use('/note', noteRouter);
+//app.use('/notification', notificationRouter);
+//app.use('/room', roomRouter);
+//app.use('/user', userRouter);
 
 app.listen(app.get('port'), () => {
     console.log(`Stickynotes Server is running at http://localhost: ${app.get('port')} 
