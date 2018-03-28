@@ -1,21 +1,24 @@
 import { room as Room, IRoom } from './room.model'
 import * as mongoose from 'mongoose';
 
-export class NoteService {
-    save(note: INote) {
-        return note.save();
+export abstract class RoomService {
+    static save(room: IRoom) {
+        return room.save();
     }
 
-    getById(id: mongoose.Schema.Types.ObjectId) {
-        return Note.findById(id);
+    static getById(id: mongoose.Schema.Types.ObjectId) {
+        return Room.findById(id);
     }
 
-    updateById(id: mongoose.Schema.Types.ObjectId, note: Partial<INote>) {
-        return Note.findByIdAndUpdate(id, note, { new: true });
+    static updateById(id: mongoose.Schema.Types.ObjectId, room: Partial<IRoom>) {
+        return Room.findByIdAndUpdate(id, room, { new: true });
     }
 
-    deleteById(id: mongoose.Schema.Types.ObjectId) {
-        return Note.findByIdAndRemove(id);
+    static deleteById(id: mongoose.Schema.Types.ObjectId) {
+        return Room.findByIdAndRemove(id);
     }
 
+    static getAllNotesInARoom(id: mongoose.Schema.Types.ObjectId) {
+        return Room.findById(id,'notes').populate('notes');
+    }
 }
