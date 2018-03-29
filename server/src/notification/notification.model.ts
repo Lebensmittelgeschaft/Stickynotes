@@ -9,7 +9,7 @@ export interface INotification extends Document {
 }
 
 const notificationSchema = new Schema({
-    _id: {
+    id: {
         type: Schema.Types.ObjectId,
     },
     content: {
