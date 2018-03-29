@@ -11,10 +11,8 @@ export interface INote extends Document {
 }
 
 const noteSchema = new Schema({
-    _id: {
+    id: {
         type: Schema.Types.ObjectId,
-        unique: true,
-        required: true,
     },
     color: {
         type: String,
@@ -33,11 +31,11 @@ const noteSchema = new Schema({
         default: { x: 15, y: 15 },
     },
     creationdate: {
-        type: Number,
+        type: Date,
         default: new Date(),
     },
     updatedate: {
-        type: Number,
+        type: Date,
         default: new Date(),
     },
 });

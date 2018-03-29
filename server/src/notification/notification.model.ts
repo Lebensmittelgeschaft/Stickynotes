@@ -11,8 +11,6 @@ export interface INotification extends Document {
 const notificationSchema = new Schema({
     _id: {
         type: Schema.Types.ObjectId,
-        unique: true,
-        required: true,
     },
     content: {
         type: String,

@@ -1,7 +1,7 @@
 import { note as Note, INote } from './note.model'
 import * as mongoose from 'mongoose';
 
-export class NoteService {
+export abstract class NoteService {
     static save(note: INote) {
         return note.save();
     }
