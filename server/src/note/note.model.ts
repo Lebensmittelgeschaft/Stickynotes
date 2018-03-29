@@ -31,7 +31,6 @@ const noteSchema = new Schema({
     position: {
         type: { x: Number, y: Number },
         default: { x: 15, y: 15 },
-        // rerequired: true,
     },
     creationdate: {
         type: Number,

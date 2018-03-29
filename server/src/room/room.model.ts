@@ -2,12 +2,10 @@ import { Schema, model, Document } from 'mongoose';
 
 export interface IRoom extends Document {
     _id: Schema.Types.ObjectId;
-    //users: { type: Schema.Types.ObjectId, ref: 'user' }[];
     users: { type: string, ref: 'user' }[];
     name: string;
     notes: { type: Schema.Types.ObjectId, ref: 'note' }[];
     isActive: boolean;
-    //owner: { type: Schema.Types.ObjectId, ref: 'user' }
     owner: { type: string, ref: 'user' }
     timestamp: number;
 }

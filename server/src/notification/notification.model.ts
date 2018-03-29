@@ -1,7 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface INotification extends Document {
-    // T....
     _id: Schema.Types.ObjectId;
     content: string;
     timestamp: Date;
