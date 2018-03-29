@@ -10,6 +10,20 @@ export abstract class RoomService {
         return Room.findById(id);
     }
 
+    static getUserOwnerRooms(userId: string) {
+        return Room.find({ owner: userId });
+    }
+
+    static getUserRooms(userId: string) {
+        return Room.find({
+            users: {
+                $elemMatch: {
+                    $eq: userId
+                }
+            }
+        });
+    }
+
     static updateById(id: mongoose.Schema.Types.ObjectId, room: Partial<IRoom>) {
         return Room.findByIdAndUpdate(id, room, { new: true });
     }
@@ -19,6 +33,6 @@ export abstract class RoomService {
     }
 
     static getAllNotesInARoom(id: mongoose.Schema.Types.ObjectId) {
-        return Room.findById(id,'notes').populate('notes');
+        return Room.findById(id, 'notes').populate('notes');
     }
 }
