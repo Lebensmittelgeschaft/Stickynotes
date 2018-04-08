@@ -4,10 +4,27 @@
   "description": "An application to create rooms & share notes with friends",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "set NODE_ENV=dev&&npm run build && npm run serve",
+    "build": "tsc",
+    "build-watch": "tsc -w",
+    "build-start": "npm run build && npm run start",
+    "serve": "node dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lebensmittelgeschaft/Stickynotes.git"
   },
   "author": "Yuval Assa",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lebensmittelgeschaft/Stickynotes/issues"
+  },
+  "homepage": "https://github.com/Lebensmittelgeschaft/Stickynotes#readme",
+  "bin": {
+    "tslint": "./node_modules/.bin/tslint",
+    "tsc": "./node_moduels/.bin/tsc",
+    "nodemon": "./node_modules/.bin/nodemon"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
@@ -20,6 +37,8 @@
     "@types/morgan": "^1.7.35",
     "@types/node": "^9.4.7",
     "nodemon": "^1.17.2",
-    "typescript": "^2.7.2"
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
+    "typescript": "^2.8.1"
   }
 }
